@@ -17,7 +17,11 @@ cd djangoStripe
 virtualenv venv --python=python3.8
 source venv/bin/activate
 pip install -r requirements.txt
+````
+After install requirements create `.env` file and pasts `.env-sample` file code
+
+```bash
 ./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py runserver
-````
+```
