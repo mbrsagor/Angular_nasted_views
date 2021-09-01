@@ -1,4 +1,4 @@
-# djangoStripe
+# django
 > Django for everyone
 
 #### Dependencies
@@ -11,8 +11,8 @@ The following steps will walk you thru installation on a Mac. I think linux shou
 
 ###### Please follow Steps:
 ````bash
-`https://github.com/mbrsagor/djangoStripe.git
-cd djangoStripe
+`https://github.com/mbrsagor/django.git
+cd myapp
 virtualenv venv --python=python3.8
 source venv/bin/activate
 pip install -r requirements.txt
