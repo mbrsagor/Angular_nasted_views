@@ -1,12 +1,11 @@
 # djangoStripe
-> Django Stripe web application for online payment system.
+> Django for everyone
 
 #### Dependencies
 ###### Prerequisites
 
 - Python 3.8
 - Django 3.2.6
-- MongoDB
 
 The following steps will walk you thru installation on a Mac. I think linux should be similar. It's also possible to develop on a Windows machine, but I have not documented the steps. If you've developed django apps on Windows, you should have little problem getting up and running.
 
