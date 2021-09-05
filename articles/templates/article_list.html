@@ -1,0 +1,24 @@
+{% extends 'templates/base.html' %}
+
+{% block title %} Article lsit {% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Article List</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                {% if articles %}
+                    {% for article in articles %}
+                        {% if article.title %}
+                            <li class="list-group-item"><a href="">{{ article.title }}</a> ~~ {{ article.content }}</li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
