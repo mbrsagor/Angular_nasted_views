@@ -9,3 +9,12 @@ def articles_list_view(request):
     }
     template_name = 'article_list.html'
     return render(request, template_name, context)
+
+
+def article_details(request, id):
+    article = Article.objects.get(id=id)
+    context = {
+        'article': article
+    }
+    template_name = 'article_details.html'
+    return render(request, template_name, context)

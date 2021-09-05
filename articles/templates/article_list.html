@@ -1,6 +1,6 @@
 {% extends 'templates/base.html' %}
 
-{% block title %} Article lsit {% endblock %}
+{% block title %} Article list {% endblock %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
                 {% if articles %}
                     {% for article in articles %}
                         {% if article.title %}
-                            <li class="list-group-item"><a href="">{{ article.title }}</a> ~~ {{ article.content }}</li>
+                            <li class="list-group-item"><a href="/article/{{ article.id }}/">{{ article.title }}</a> ~~ {{ article.content }}</li>
                         {% endif %}
                     {% endfor %}
                 {% endif %}

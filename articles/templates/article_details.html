@@ -1,0 +1,16 @@
+{% extends 'templates/base.html' %}
+
+{% block title %} Article list {% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Article No: {{ article.id }}</h4>
+        </div>
+        <div class="card-body">
+            {{ article.content }}
+        </div>
+    </div>
+
+{% endblock %}
