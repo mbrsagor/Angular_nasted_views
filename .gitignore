@@ -1,6 +1,7 @@
 .vscode/
 .idea/
 venv
+/migrations/
 .env
 __pycache__/
 db.sqlite3
