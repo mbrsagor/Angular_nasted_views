@@ -1,5 +1,6 @@
 from enum import IntEnum
 
+
 class UserRole(IntEnum):
     CHAIRMAN = 0
     MEMBER = 1

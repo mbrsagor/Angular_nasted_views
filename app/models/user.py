@@ -1,9 +1,10 @@
 import datetime
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from app.utils.type import UserRole, Gender
+from utils.type import UserRole, Gender
 from app.manager import UserManager
+
 
 class Union(models.Model):
     name = models.CharField(max_length=150)
@@ -11,12 +12,12 @@ class Union(models.Model):
 
     class Meta:
         unique_together = ('name', 'world_no',)
-    
+
     def __str__(self):
         return self.name
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractUser):
     email = models.EmailField(blank=True, unique=True)
     full_name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=14, unique=True)
@@ -41,7 +42,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['phone_number']
 
     def __str__(self):
-        if self.email:
-            return self.email
-        else:
-            return self.phone_number
+        return self.email
