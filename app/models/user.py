@@ -10,6 +10,9 @@ class Union(models.Model):
     name = models.CharField(max_length=150, unique=True)
     world_no = models.IntegerField(default=1)
 
+    # class Meta:
+    #     unique_together = ('name', 'world_no',)
+
     def __str__(self):
         return self.name
 
@@ -33,13 +36,10 @@ class User(AbstractUser):
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    objects = UserManager()
+    # objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone_number']
-
-    # class Meta:
-    #     unique_together = ('email', 'phone_number',)
+    REQUIRED_FIELDS = ['username', 'phone_number']
 
     def __str__(self):
         return self.email
