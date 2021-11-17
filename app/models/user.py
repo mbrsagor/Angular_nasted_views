@@ -7,11 +7,8 @@ from app.manager import UserManager
 
 
 class Union(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     world_no = models.IntegerField(default=1)
-
-    class Meta:
-        unique_together = ('name', 'world_no',)
 
     def __str__(self):
         return self.name
@@ -20,7 +17,7 @@ class Union(models.Model):
 class User(AbstractUser):
     email = models.EmailField(blank=True, unique=True)
     full_name = models.CharField(max_length=50)
-    phone_number = models.CharField(max_length=14, unique=True)
+    phone_number = models.CharField(max_length=14)
     is_candidate = models.BooleanField(default=False)
     role = models.IntegerField(choices=UserRole.select_role(), default=UserRole.CITIZEN.value)
     gender = models.IntegerField(choices=Gender.select_gender(), default=Gender.MALE.value)
@@ -40,6 +37,9 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['phone_number']
+
+    # class Meta:
+    #     unique_together = ('email', 'phone_number',)
 
     def __str__(self):
         return self.email

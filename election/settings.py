@@ -101,13 +101,20 @@ WSGI_APPLICATION = 'election.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'election',
-        'USER': 'mbr-sagor',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        # 'PORT': '127.0.0.01',
+        'NAME': env("DB_NAME"),
+        'HOST': env("DB_HOST"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'PORT': env("DB_PORT"),
     }
 }
+
+# Cors Origin
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:8000"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
