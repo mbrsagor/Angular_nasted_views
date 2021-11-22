@@ -1,45 +1,41 @@
-import datetime
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-
-from utils.type import UserRole, Gender
-from app.manager import UserManager
-
-
-class Union(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    world_no = models.IntegerField(default=1)
-
-    # class Meta:
-    #     unique_together = ('name', 'world_no',)
-
-    def __str__(self):
-        return self.name
+from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class User(AbstractUser):
-    email = models.EmailField(blank=True, unique=True)
-    full_name = models.CharField(max_length=50)
-    phone_number = models.CharField(max_length=14)
-    is_candidate = models.BooleanField(default=False)
-    role = models.IntegerField(choices=UserRole.select_role(), default=UserRole.CITIZEN.value)
-    gender = models.IntegerField(choices=Gender.select_gender(), default=Gender.MALE.value)
-    education = models.CharField(max_length=500, blank=True, null=True)
-    address = models.CharField(max_length=200)
-    union_name = models.ForeignKey(Union, on_delete=models.CASCADE, related_name='user_union', null=True)
-    brand = models.ImageField(upload_to='brand', blank=True, null=True)
-    nid = models.CharField(max_length=200)
-    age = models.IntegerField(default=18)
-    date_of_birth = models.DateField(default=datetime.date.today)
-    profile_picture = models.ImageField(upload_to='user', blank=True, null=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    # objects = UserManager()
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'phone_number']
+    email = models.EmailField(blank=True, unique=False)
+    phone_number = models.CharField(max_length=14, unique=True)
+    nid_number = models.CharField(max_length=14, unique=True)
 
     def __str__(self):
-        return self.email
+        return self.username
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    address = models.TextField(max_length=500, blank=True)
+    union = models.CharField(max_length=100, blank=True)
+    word_number = models.IntegerField(default=1, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    MALE = 1
+    FEMALE = 2
+    OTHERS = 3
+    CHOICES_GENDER = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+        (OTHERS, 'Others'),
+    )
+    gender = models.PositiveSmallIntegerField(choices=CHOICES_GENDER, null=True, blank=True)
+    profile_picture = models.ImageField(default='default.jpg', upload_to='profile_picture', blank=True, null=True)
+    cover_photo = models.ImageField(default='default.jpg', upload_to='cover_photo', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.username
+
+    @property
+    def make_full_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
