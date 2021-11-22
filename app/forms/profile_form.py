@@ -5,7 +5,9 @@ from app.models.user import Profile
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = [
+            'address', 'union', 'word_number', 'birth_date', 'gender', 'profile_picture'
+        ]
         exclude = ['user', 'user_id']
 
         widgets = {
@@ -15,5 +17,4 @@ class ProfileForm(ModelForm):
             'birth_date': DateInput(attrs={'class': 'form-control', 'id': 'birth_date', 'type': 'date'}),
             'gender': Select(attrs={'class': 'form-control', 'id': 'gender'}),
             'profile_picture': FileInput(attrs={'class': 'form-control', 'id': 'imageUpload'}),
-            'cover_photo': FileInput(attrs={'class': 'form-control', 'id': 'imageUpload'}),
         }

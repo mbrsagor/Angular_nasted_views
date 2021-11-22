@@ -1,3 +1,4 @@
+from datetime import date
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
@@ -30,7 +31,6 @@ class Profile(models.Model):
     )
     gender = models.PositiveSmallIntegerField(choices=CHOICES_GENDER, null=True, blank=True)
     profile_picture = models.ImageField(default='default.jpg', upload_to='profile_picture', blank=True, null=True)
-    cover_photo = models.ImageField(default='default.jpg', upload_to='cover_photo', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -40,6 +40,11 @@ class Profile(models.Model):
     @property
     def make_full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
+
+    @property
+    def current_age(self):
+        today = date.today()
+        return (today - self.birth_date).days
 
 
 @receiver(post_save, sender=User)
