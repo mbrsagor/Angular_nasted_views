@@ -17,10 +17,10 @@ class SymbolForm(ModelForm):
 class NominationForm(ModelForm):
     class Meta:
         model = Nomination
-        exclude = ('candidate',)
+        exclude = ['candidate', 'candidate_id']
         fields = [
             'qualification', 'profession', 'eduction', 'present_address', 'phone_number', 'email_address',
-            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name', 'candidate'
+            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name'
         ]
 
         widgets = {

@@ -26,8 +26,10 @@ class NominationApplyView(SuccessMessageMixin, CreateView):
     success_message = 'Nomination has been send'
     success_url = '/nomination-apply/'
 
-    def get_object(self, **kwargs):
-        return self.request.user
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.candidate = self.request.user.profile
+        return super(NominationApplyView, self).form_valid(form)
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')

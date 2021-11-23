@@ -1,6 +1,7 @@
 # election
-Election funny full-stack web application which backend Django Rest Framework and Frontend React.JS
+Election funny web application which backend Django & Django Rest Framework and Mobile Application.
 
+> For university academic project purposes making the web app.
 
 ### Prerequisites
 ###### Prerequisites
