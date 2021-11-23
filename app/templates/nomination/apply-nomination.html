@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Apply nomination {% endblock %}
+
+{% block content %}
+
+    {% include 'profile/pageheader.html' %}
+
+    {% include 'profile/message.html' %}
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-0 pr-0">
+        <div class="card">
+            <h5 class="card-header">Apply for the nomination</h5>
+            <div class="card-body">
+                <form method="POST" class="agent_profile_create" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-space btn-primary btn-sm">save</button>
+                    <button type="reset" class="btn btn-space btn-secondary btn-sm">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

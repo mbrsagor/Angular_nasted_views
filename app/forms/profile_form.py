@@ -16,5 +16,5 @@ class ProfileForm(ModelForm):
             'word_number': NumberInput(attrs={'class': 'form-control', 'id': 'word_number'}),
             'birth_date': DateInput(attrs={'class': 'form-control', 'id': 'birth_date', 'type': 'date'}),
             'gender': Select(attrs={'class': 'form-control', 'id': 'gender'}),
-            'profile_picture': FileInput(attrs={'class': 'form-control', 'id': 'imageUpload'}),
+            'profile_picture': FileInput(attrs={'class': 'custom-file-input', 'id': 'imageUpload'}),
         }

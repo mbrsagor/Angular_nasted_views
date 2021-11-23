@@ -15,21 +15,22 @@ class SymbolForm(ModelForm):
 
 
 class NominationForm(ModelForm):
-    model = Nomination
-    exclude = ['user', 'user_id']
-    fields = (
-        '__all__'
-    )
-    widgets = {
-        'qualification': TextInput(attrs={'class': 'form-control', 'id': 'qualification'}),
-        'profession': TextInput(attrs={'class': 'form-control', 'id': 'profession'}),
-        'eduction': TextInput(attrs={'class': 'form-control', 'id': 'eduction'}),
-        'present_address': TextInput(attrs={'class': 'form-control', 'id': 'present_address'}),
-        'phone_number': TextInput(attrs={'class': 'form-control', 'id': 'phone_number'}),
-        'email_address': EmailInput(attrs={'class': 'form-control', 'id': 'email_address'}),
-        'father_name': TextInput(attrs={'class': 'form-control', 'id': 'father_name'}),
-        'mother_name': TextInput(attrs={'class': 'form-control', 'id': 'mother_name'}),
-        'is_approve': CheckboxInput(attrs={'class': 'form-control', 'id': 'is_approve'}),
-        'position': Select(attrs={'class': 'form-control', 'id': 'position'}),
-        'symbol_name': Select(attrs={'class': 'form-control', 'id': 'symbol_name'}),
-    }
+    class Meta:
+        model = Nomination
+        exclude = ['candidate', 'candidate_id']
+        fields = (
+            '__all__'
+        )
+        widgets = {
+            'qualification': TextInput(attrs={'class': 'form-control', 'id': 'qualification'}),
+            'profession': TextInput(attrs={'class': 'form-control', 'id': 'profession'}),
+            'eduction': TextInput(attrs={'class': 'form-control', 'id': 'eduction'}),
+            'present_address': TextInput(attrs={'class': 'form-control', 'id': 'present_address'}),
+            'phone_number': TextInput(attrs={'class': 'form-control', 'id': 'phone_number'}),
+            'email_address': EmailInput(attrs={'class': 'form-control', 'id': 'email_address'}),
+            'father_name': TextInput(attrs={'class': 'form-control', 'id': 'father_name'}),
+            'mother_name': TextInput(attrs={'class': 'form-control', 'id': 'mother_name'}),
+            'is_approve': CheckboxInput(attrs={'class': 'form-control', 'id': 'is_approve'}),
+            'position': Select(attrs={'class': 'form-control', 'id': 'position'}),
+            'symbol_name': Select(attrs={'class': 'form-control', 'id': 'symbol_name'}),
+        }

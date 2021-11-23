@@ -2,21 +2,18 @@ from django.db import models
 from app.models.user import Profile
 
 
-class BaseEntity(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-
-class Symbol(BaseEntity):
+class Symbol(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='symbol')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
-class Nomination(BaseEntity):
-    user = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name='nominationProfile')
+class Nomination(models.Model):
+    candidate = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name='nominationProfile')
     qualification = models.CharField(max_length=300)
     profession = models.CharField(max_length=100)
     eduction = models.CharField(max_length=100)
@@ -36,7 +33,7 @@ class Nomination(BaseEntity):
         (WORDCHAIREMAN, 'Word Chairman'),
     )
     position = models.PositiveSmallIntegerField(choices=CHOICES_POSITION)
-    symbol_name = models.ForeignKey(Symbol, on_delete=models.CASCADE, related_name='symbol')
+    symbol_name = models.OneToOneField(Symbol, on_delete=models.CASCADE, related_name='symbol')
 
     def __str__(self):
-        return self.user_id
+        return self.candidate.user.username
