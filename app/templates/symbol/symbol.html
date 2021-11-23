@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %} Add & List of category || Service24{% endblock %}
+
+
+{% block content %}
+    <!-- page header  -->
+    {% include "symbol/pageheader.html" %}
+    <!-- end page header  -->
+
+    <!-- ============================================================== -->
+    <!-- main content  -->
+    <!-- ============================================================== -->
+    <div class="row">
+
+        {% include "profile/message.html" %}
+
+        <div class="col-lg-12 mb-3">
+            <div class="row">
+                <div class="col-lg-3">
+                    <form method="POST">
+                        <div class="input-group input-group-sm">
+                            <input name="category" placeholder="Search..." type="text" class="form-control"/>
+                            <button id="searchBtn" type="button" class="btn btn-primary btn-flat btn-sm">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-9 text-right">
+                    {% if user.is_superuser %}
+                        <button type="button" data-backdrop="static" data-keyboard="false"
+                                class="btn btn-primary btn-sm"
+                                data-toggle="modal" data-target="#modal-primary"><i class="fa fa-plus"></i></button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- start table -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">List of nomination</h5>
+                <div class="card-body">
+                    {% if symbol %}
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Created Date</th>
+                                <th>Created Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for obj in symbol %}
+                                <tr>
+                                    <td>{{ obj.name }}</td>
+                                    <td><img src="{{ obj.image.url }}" alt="{{ obj.name }}"></td>
+                                    <td>{{ obj.created_at }}</td>
+                                    <td>{{ obj.update_at }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <h3 class="text-center text-danger">Sorry! No Symbol Found.</h3>
+                    {% endif %}
+                    <!-- pagination -->
+                    {% if is_paginated %}
+                        {% include "symbol/pagination.html" %}
+                    {% endif %}
+                    <!-- end pagination -->
+                </div>
+            </div>
+        </div>
+        <!-- end table -->
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- end main content  -->
+    <!-- ============================================================== -->
+
+    {% include 'symbol/modal.html' %}
+
+    <script type="text/javascript">
+        let searchBtn = document.getElementById('searchBtn')
+        console.log(searchBtn);
+    </script>
+
+{% endblock %}
