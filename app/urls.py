@@ -4,7 +4,7 @@ from app.views.homepage_view import Homepage
 from app.views.dashboard_view import DashboardView
 from app.views.user_view import SignInView, SingUpView, Logout
 from app.views.profile_view import ProfileView, ProfileUpdateView
-from app.views.nomination_view import SymbolView, NominationApplyView
+from app.views.nomination_view import SymbolView, NominationApplyView, NominationSubmitList
 
 urlpatterns = [
     path('', Homepage.as_view(), name='homepage'),
@@ -18,4 +18,5 @@ urlpatterns = [
     # nomination
     path('symbol/', SymbolView.as_view(), name='symbol_view'),
     path('nomination-apply/', NominationApplyView.as_view(), name='nomination_apply'),
+    path('nomination/', NominationSubmitList.as_view(), name='nomination_view'),
 ]

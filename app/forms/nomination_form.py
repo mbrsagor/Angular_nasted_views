@@ -17,10 +17,12 @@ class SymbolForm(ModelForm):
 class NominationForm(ModelForm):
     class Meta:
         model = Nomination
-        exclude = ['candidate', 'candidate_id']
-        fields = (
-            '__all__'
-        )
+        exclude = ('candidate',)
+        fields = [
+            'qualification', 'profession', 'eduction', 'present_address', 'phone_number', 'email_address',
+            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name', 'candidate'
+        ]
+
         widgets = {
             'qualification': TextInput(attrs={'class': 'form-control', 'id': 'qualification'}),
             'profession': TextInput(attrs={'class': 'form-control', 'id': 'profession'}),
@@ -31,6 +33,7 @@ class NominationForm(ModelForm):
             'father_name': TextInput(attrs={'class': 'form-control', 'id': 'father_name'}),
             'mother_name': TextInput(attrs={'class': 'form-control', 'id': 'mother_name'}),
             'is_approve': CheckboxInput(attrs={'class': 'form-control', 'id': 'is_approve'}),
+            'status': CheckboxInput(attrs={'class': 'form-control', 'id': 'status'}),
             'position': Select(attrs={'class': 'form-control', 'id': 'position'}),
             'symbol_name': Select(attrs={'class': 'form-control', 'id': 'symbol_name'}),
         }

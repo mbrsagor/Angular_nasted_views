@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Add & List of category || Service24{% endblock %}
+{% block title %} Add & List of symbol || Service24{% endblock %}
 
 
 {% block content %}
@@ -57,7 +57,7 @@
                                     <td>{{ obj.name }}</td>
                                     <td><img src="{{ obj.image.url }}" alt="{{ obj.name }}"></td>
                                     <td>{{ obj.created_at }}</td>
-                                    <td>{{ obj.update_at }}</td>
+                                    <td>{{ obj.updated_at }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

@@ -32,8 +32,10 @@ class Nomination(models.Model):
         (MEMBER, 'Member'),
         (WORDCHAIREMAN, 'Word Chairman'),
     )
+    status = models.BooleanField(default=False)
     position = models.PositiveSmallIntegerField(choices=CHOICES_POSITION)
-    symbol_name = models.OneToOneField(Symbol, on_delete=models.CASCADE, related_name='symbol')
+    symbol_name = models.ForeignKey(Symbol, on_delete=models.CASCADE, related_name='symbol')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.candidate.user.username

@@ -26,14 +26,18 @@ class NominationApplyView(SuccessMessageMixin, CreateView):
     success_message = 'Nomination has been send'
     success_url = '/nomination-apply/'
 
+    def get_object(self, **kwargs):
+        return self.request.user
+
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
-class NominationSubmitHistory(ListView):
+class NominationSubmitList(ListView):
     model = Nomination
     context_object_name = 'nomination'
+    template_name = 'nomination/nomination_list.html'
 
     def get_queryset(self):
-        if not self.request.user:
-            Nomination.objects.filter(user=self.request.user.candidate_id)
+        if not self.request.user.is_superuser:
+            return Nomination.objects.filter(candidate=self.request.user.profile)
         else:
-            Nomination.objects.all()
+            return Nomination.objects.all()
