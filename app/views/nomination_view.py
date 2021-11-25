@@ -1,4 +1,5 @@
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
@@ -40,6 +41,6 @@ class NominationSubmitList(ListView):
 
     def get_queryset(self):
         if not self.request.user.is_superuser:
-            return Nomination.objects.filter(candidate=self.request.user.profile)
+            return redirect('/nomination-apply/')
         else:
             return Nomination.objects.all()
