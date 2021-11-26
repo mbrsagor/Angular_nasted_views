@@ -44,3 +44,16 @@ class NominationSubmitList(ListView):
             return redirect('/nomination-apply/')
         else:
             return Nomination.objects.all()
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CandidatesList(ListView):
+    model = Nomination
+    context_object_name = 'nomination'
+    template_name = 'nomination/candidates_list.html'
+
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Nomination.objects.filter(status=True)
+        else:
+            return False
