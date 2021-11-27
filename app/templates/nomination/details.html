@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Candidate Nomination Details || Election {% endblock %}
+{% block title %} Candidate Details || Election {% endblock %}
 
 
 {% block content %}
@@ -11,49 +11,76 @@
         <!-- start table -->
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
-                <h5 class="card-header">{% if request.user.is_superuser %} List of nomination {% else %} My nomination list {% endif %}</h5>
+                <h5 class="card-header">{{ nomination.candidate }} Details</h5>
                 <div class="card-body">
-                    {% if nomination %}
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Candidate Name</th>
-                                <th>Qualification</th>
-                                <th>Profession</th>
-                                <th>Phone Number</th>
-                                <th>Created Date</th>
-                                <th class="text-center">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            {% for obj in nomination %}
-                                <tr>
-                                    <td>{{ obj.candidate }}</td>
-                                    <td>{{ obj.qualification }}</td>
-                                    <td>{{ obj.profession }}</td>
-                                    <td>{{ obj.phone_number }}</td>
-                                    <td>{{ obj.created_at }}</td>
-                                    <td align="center">
-                                        <a title="Details the candidates" style="margin-right: 5px" class="btn-sm btn-success" href="#">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a title="Update the candidates" style="margin-right: 5px" class="btn-sm btn-success" href="#">
-                                           <i class="fa fa-pen-square"></i>
-                                        </a>
-                                        <a title="Delete the candidates" class="btn-sm btn-danger" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    {% else %}
-                        <h3 class="text-center text-danger">
-                        {% if request.user.is_superuser %} Sorry! No Candidate Found. {% else %} Please wait... {% endif %}
-                        </h3>
-                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email_address">Candidate Email Address</label>
+                                <input disabled value="{{ nomination.email_address }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="qualification">Candidate Qualification</label>
+                                <input disabled value="{{ nomination.qualification }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="profession">Candidate Profession</label>
+                                <input disabled value="{{ nomination.profession }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="eduction">Candidate Education</label>
+                                <input disabled value="{{ nomination.eduction }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="present_address">Candidate Present Address</label>
+                                <input disabled value="{{ nomination.present_address }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone_number">Candidate Phone Number</label>
+                                <input disabled value="{{ nomination.phone_number }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="position">Candidate Position</label>
+                                <input disabled value="{{ nomination.position }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="father_name">Candidate Father Name</label>
+                                <input disabled value="{{ nomination.father_name }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="mother_name">Candidate Mother Name</label>
+                                <input disabled value="{{ nomination.mother_name }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="symbol_name">Candidate Symbol Name</label>
+                                <input disabled value="{{ nomination.symbol_name }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="is_approve">Candidate Approve</label>
+                                <input disabled
+                                       value="{% if is_approve %} Approve Done {% else %} Still Pending {% endif %}"
+                                       type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="created_at">Candidate Application Date</label>
+                                <input disabled value="{{ nomination.created_at }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

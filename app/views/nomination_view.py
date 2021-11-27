@@ -64,3 +64,15 @@ class CandidatesList(ListView):
         if not self.request.user.is_superuser:
             return redirect(reverse_lazy("nomination_apply"))
         return super(CandidatesList, self).dispatch(request, *args, **kwargs)
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CandidatesDetails(DetailView):
+    template_name = 'nomination/details.html'
+    model = Nomination
+    context_object_name = 'nomination'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_superuser:
+            return redirect(reverse_lazy("nomination_apply"))
+        return super(CandidatesDetails, self).dispatch(request, *args, **kwargs)

@@ -35,10 +35,10 @@
                                     <td>{{ obj.phone_number }}</td>
                                     <td>{{ obj.created_at }}</td>
                                     <td align="center">
-                                        <a title="Details the candidates" style="margin-right: 5px" class="btn-sm btn-success" href="#">
+                                        <a title="Details the candidates" style="margin-right: 5px" class="btn-sm btn-success" href="{% url 'candidates_details' obj.id %}">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a title="Update the candidates" style="margin-right: 5px" class="btn-sm btn-success" href="#">
+                                        <a title="Update the candidates" style="margin-right: 5px" class="btn-sm btn-success" href="">
                                            <i class="fa fa-pen-square"></i>
                                         </a>
                                         <a title="Delete the candidates" class="btn-sm btn-danger" href="#">
