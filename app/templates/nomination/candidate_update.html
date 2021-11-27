@@ -16,10 +16,6 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
-                             <div class="form-group">
-                                <label disabled="" for="email_address">Candidate Username</label>
-                                {{ form.candidate }}
-                            </div>
                             <div class="form-group">
                                 <label for="email_address">Candidate Email Address</label>
                                 {{ form.email_address }}
@@ -44,6 +40,10 @@
                                 <label for="phone_number">Candidate Phone Number</label>
                                 {{ form.phone_number }}
                             </div>
+                            <div class="form-group">
+                                <label for="is_approve">Is Approve</label>
+                               {{ form.is_approve }}
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -61,10 +61,6 @@
                             <div class="form-group">
                                 <label for="symbol_name">Candidate Symbol Name</label>
                                 {{ form.symbol_name }}
-                            </div>
-                            <div class="form-group">
-                                <label for="is_approve">Is Approve</label>
-                               {{ form.is_approve }}
                             </div>
                             <div class="form-group">
                                 <label for="status">Is Active</label>
