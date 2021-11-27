@@ -28,28 +28,26 @@
             <div class="tab-content" id="myTabContent3">
                 <div class="tab-pane fade show active" id="home-vertical" role="tabpanel"
                      aria-labelledby="home-vertical-tab">
-                    {% if request.user.first_name %} <p>First Name: {{ request.user.first_name }} </p> {% endif %}
-                    {% if request.user.last_name %}  <p>Last Name: {{ request.user.last_name }}  </p>{% endif %}
-                    {% if profile_ctx.make_full_name %}  <p>Full Name:
-                        {{ profile_ctx.make_full_name }}</p> {% endif %}
-                    <p>NID: {{ request.user.nid_number }}</p>
-                    {% if request.user.phone_number %}<p>Phone Number: {{ request.user.phone_number }}</p> {% endif %}
-                    {% if request.user.email %} <p>Email Address: {{ request.user.email }}</p> {% endif %}
-                    {% if request.user.address %} <p>Email Address: {{ request.user.address }}</p> {% endif %}
-                    {% if request.user.last_login %} <p>Last Login: {{ request.user.last_login }}  </p> {% endif %}
+                    {% if request.user.first_name %}First Name: <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.first_name }}"/>{% endif %}
+                    {% if request.user.last_name %} Last Name: <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.last_name }}"/>{% endif %}
+                    {% if profile_ctx.make_full_name %}  Full Name <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.make_full_name }}"/> {% endif %}
+                    {% if request.user.nid_number %} NID Number <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.nid_number }}"/>{% endif %}
+                    {% if request.user.phone_number %}Phone Number <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.phone_number }}"/>  {% endif %}
+                    {% if request.user.email %} Email Address <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.email }}"/> {% endif %}
+                    {% if profile_ctx.address %} Address <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.address }}"/> {% endif %}
+                    {% if request.user.last_login %} Last Login <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.last_login }}"/> {% endif %}
                 </div>
                 <div class="tab-pane fade" id="profile-vertical" role="tabpanel" aria-labelledby="profile-vertical-tab">
                     <h3>Secondary Information</h3>
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Address: {{ profile_ctx.address }}</p>
-                            <p>Word Number: {{ profile_ctx.word_number }}</p>
-                            <p>Union: {{ profile_ctx.union }}</p>
-                            <p>Date Of Birth: {{ profile_ctx.birth_date }}</p>
-                            <p>Current Age: {{ profile_ctx.current_age }} Days</p>
+                            {% if profile_ctx.word_number %} Word Number <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.word_number }}"/> {% endif %}
+                            {% if profile_ctx.union %} Union Address <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.union }}"/> {% endif %}
+                            {% if profile_ctx.birth_date %} Date Of  Birthday <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.birth_date }}"/> {% endif %}
+                            {% if profile_ctx.current_age %} Date Of  Birthday <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.current_age }} Days"/> {% endif %}
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ profile_ctx.profile_picture }}" alt="{{ request.user.username }}">
+                            <img src="/media/{{ profile_ctx.profile_picture.url }}" alt="{{ request.user.username }}">
                         </div>
                     </div>
                 </div>
