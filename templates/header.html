@@ -9,73 +9,36 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
-                {% if request.user.is_authenticated %}
-                    {% if request.user.is_superuser or request.user.is_staff %}
-                        <li class="nav-item dropdown notification">
-                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
-                                    class="indicator"></span></a>
-                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
-                                <li>
-                                    <div class="notification-title"> Notification</div>
-                                    <div class="notification-list">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img
-                                                            src="{% static 'assets/images/avatar-2.jpg' %}"
-                                                            alt=""
-                                                            class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span
-                                                            class="notification-list-user-name">
-                                                        Smart-tech </span>accepted
-                                                        your invitation to join the team.
-                                                        <div class="notification-date">2 days age</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="list-footer"><a href="#">View all notifications</a></div>
-                                </li>
-                            </ul>
-                        </li>
-                    {% endif %}
-                    <li class="nav-item dropdown nav-user">
-                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false"><img
-                                src="{% static 'assets/images/avatar-1.jpg' %}" alt=""
-                                class="user-avatar-md rounded-circle"></a>
-                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
-                             aria-labelledby="navbarDropdownMenuLink2">
-                            <div class="nav-user-info">
-                                {% if user.is_authenticated %}
-                                    <h5 class="mb-0 text-white nav-user-name">{{ user.username }}</h5>
+                <li class="nav-item dropdown nav-user">
+                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        {% if profile_ctx.profile_picture.url %}
+                            <img src="{{ profile_ctx.profile_picture.url }}" alt=""
+                                 class="user-avatar-md rounded-circle">
+                        {% else %}
+                            <img src="{% static 'assets/images/avatar-1.jpg' %}" alt=""
+                                 class="user-avatar-md rounded-circle">
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                         aria-labelledby="navbarDropdownMenuLink2">
+                        <div class="nav-user-info">
+                            <h5 class="mb-0 text-white nav-user-name">
+                                {% if profile_ctx.make_full_name %}
+                                    {{ profile_ctx.make_full_name }}
+                                {% else %}
+                                    {{ user.username }}
                                 {% endif %}
-                            </div>
-                            <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user mr-2"></i>Account</a>
-                            {% if request.user.is_authenticated %}
-                                <a class="dropdown-item" href="#"><i
-                                        class="fas fa-cog
-                        mr-2"></i>Setting</a>
-                            {% endif %}
-                            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-power-off
-                        mr-2"></i>Logout</a>
+                            </h5>
                         </div>
-                    </li>
-                {% else %}
-                    <div class="sidebar-nav-fixed">
-                        <li><a class="nav-link" href="#overview">Overview</a></li>
-                        <li><a href="#service">Service</a></li>
-                        <li><a href="#category">Category</a></li>
-                        <li><a href="#feedback">Client feedback</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a class="btn btn-primary btn-xs" href="/login">Login</a></li>
-                        <li><a class="btn btn-primary btn-xs" href="/signup/">Sing Up</a></li>
+                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-cog
+                        mr-2"></i>Setting</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-power-off
+                        mr-2"></i>Logout</a>
                     </div>
-                {% endif %}
+                </li>
             </ul>
         </div>
     </nav>

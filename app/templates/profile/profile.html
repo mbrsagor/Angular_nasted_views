@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} {{ request.user.username }} Profile {% endblock %}
 
 {% block content %}
+
+    <style type="text/css">
+        .profile_picture img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #f3f3f3;
+        }
+    </style>
+
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
         <div class="section-block">
             <h5 class="section-title text-capitalize">{{ request.user.username }} Overview</h5>
@@ -28,26 +39,55 @@
             <div class="tab-content" id="myTabContent3">
                 <div class="tab-pane fade show active" id="home-vertical" role="tabpanel"
                      aria-labelledby="home-vertical-tab">
-                    {% if request.user.first_name %}First Name: <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.first_name }}"/>{% endif %}
-                    {% if request.user.last_name %} Last Name: <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.last_name }}"/>{% endif %}
-                    {% if profile_ctx.make_full_name %}  Full Name <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.make_full_name }}"/> {% endif %}
-                    {% if request.user.nid_number %} NID Number <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.nid_number }}"/>{% endif %}
-                    {% if request.user.phone_number %}Phone Number <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.phone_number }}"/>  {% endif %}
-                    {% if request.user.email %} Email Address <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.email }}"/> {% endif %}
-                    {% if profile_ctx.address %} Address <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.address }}"/> {% endif %}
-                    {% if request.user.last_login %} Last Login <input class="form-control form-control-sm" disabled type="text" value="{{ request.user.last_login }}"/> {% endif %}
+                    {% if request.user.first_name %}First Name:
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ request.user.first_name }}"/>{% endif %}
+                    {% if request.user.last_name %} Last Name:
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ request.user.last_name }}"/>{% endif %}
+                    {% if profile_ctx.make_full_name %}  Full Name
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ profile_ctx.make_full_name }}"/> {% endif %}
+                    {% if request.user.nid_number %} NID Number
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ request.user.nid_number }}"/>{% endif %}
+                    {% if request.user.phone_number %}Phone Number
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ request.user.phone_number }}"/>  {% endif %}
+                    {% if request.user.email %} Email Address
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ request.user.email }}"/> {% endif %}
+                    {% if profile_ctx.address %} Address<input class="form-control form-control-sm" disabled type="text"
+                                                               value="{{ profile_ctx.address }}"/> {% endif %}
+                    {% if request.user.last_login %} Last Login
+                        <input class="form-control form-control-sm" disabled type="text"
+                               value="{{ request.user.last_login }}"/> {% endif %}
                 </div>
                 <div class="tab-pane fade" id="profile-vertical" role="tabpanel" aria-labelledby="profile-vertical-tab">
                     <h3>Secondary Information</h3>
                     <div class="row">
-                        <div class="col-md-6">
-                            {% if profile_ctx.word_number %} Word Number <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.word_number }}"/> {% endif %}
-                            {% if profile_ctx.union %} Union Address <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.union }}"/> {% endif %}
-                            {% if profile_ctx.birth_date %} Date Of  Birthday <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.birth_date }}"/> {% endif %}
-                            {% if profile_ctx.current_age %} Date Of  Birthday <input class="form-control form-control-sm" disabled type="text" value="{{ profile_ctx.current_age }} Days"/> {% endif %}
+                        <div class="col-md-9">
+                            {% if profile_ctx.word_number %} Word Number
+                                <input class="form-control form-control-sm" disabled type="text"
+                                       value="{{ profile_ctx.word_number }}"/> {% endif %}
+                            {% if profile_ctx.union %} Union Address
+                                <input class="form-control form-control-sm" disabled type="text"
+                                       value="{{ profile_ctx.union }}"/> {% endif %}
+                            {% if profile_ctx.birth_date %} Date Of  Birthday
+                                <input class="form-control form-control-sm" disabled type="text"
+                                       value="{{ profile_ctx.birth_date }}"/> {% endif %}
+                            {% if profile_ctx.current_age %} Date Of  Birthday
+                                <input class="form-control form-control-sm" disabled type="text"
+                                       value="{{ profile_ctx.current_age }} Days"/> {% endif %}
                         </div>
-                        <div class="col-md-6">
-                            <img src="/media/{{ profile_ctx.profile_picture.url }}" alt="{{ request.user.username }}">
+                        <div class="col-md-3">
+                            <div class="profile_picture">
+                                {% if profile_ctx.profile_picture.url %}
+                                    <img src="{{ profile_ctx.profile_picture.url }}" alt="{{ request.user.username }}">
+                                    {% else %}
+                                    <img src="{% static 'assets/images/avatar-2.jpg' %}" alt="">
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,37 +95,9 @@
                     <div class="card">
                         <h5 class="card-header">Others</h5>
                         <div class="card-body">
-                            {% if order_list %}
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Service Name</th>
-                                        <th scope="col">Service Provider</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Contact</th>
-                                        <th scope="col">Order Schedule</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for obj in order_list %}
-                                        <tr>
-                                            <th>{{ obj.item }}</th>
-                                            <td>{{ obj.item.owner.company_name }}</td>
-                                            <td>{{ obj.item.price }}</td>
-                                            <td>0{{ obj.item.owner.contact_number }}</td>
-                                            <td>{{ obj.schedule }} {{ obj.schedule.date }} {{ obj.schedule.time }}</td>
-                                            <td class="bg-success-light">Done</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            {% else %}
-                                <p>No nomination yet!</p>
-                            {% endif %}
+                            <h2>Comming soon</h2>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
