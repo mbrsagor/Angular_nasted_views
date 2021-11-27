@@ -51,7 +51,7 @@
                         </table>
                     {% else %}
                         <h3 class="text-center text-danger">
-                        {% if request.user.is_superuser %} Sorry! No Candidate Found. {% else %} Please wait... {% endif %}
+                        {% if not request.user.is_superuser %} Sorry! No Candidate Found. {% else %} Please wait... {% endif %}
                         </h3>
                     {% endif %}
                     <!-- pagination -->

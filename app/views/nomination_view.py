@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -40,10 +41,13 @@ class NominationSubmitList(ListView):
     template_name = 'nomination/nomination_list.html'
 
     def get_queryset(self):
-        if not self.request.user.is_superuser:
-            return redirect('/nomination-apply/')
-        else:
+        if self.request.user.is_superuser:
             return Nomination.objects.all()
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_superuser:
+            return redirect(reverse_lazy("nomination_apply"))
+        return super(NominationSubmitList, self).dispatch(request, *args, **kwargs)
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -55,5 +59,8 @@ class CandidatesList(ListView):
     def get_queryset(self):
         if self.request.user.is_superuser:
             return Nomination.objects.filter(status=True)
-        else:
-            return False
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_superuser:
+            return redirect(reverse_lazy("nomination_apply"))
+        return super(CandidatesList, self).dispatch(request, *args, **kwargs)
