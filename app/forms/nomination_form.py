@@ -20,20 +20,20 @@ class NominationForm(ModelForm):
         exclude = ['candidate', 'candidate_id']
         fields = [
             'qualification', 'profession', 'eduction', 'present_address', 'phone_number', 'email_address',
-            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name'
+            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name', 'status'
         ]
 
         widgets = {
-            'qualification': TextInput(attrs={'class': 'form-control', 'id': 'qualification'}),
-            'profession': TextInput(attrs={'class': 'form-control', 'id': 'profession'}),
-            'eduction': TextInput(attrs={'class': 'form-control', 'id': 'eduction'}),
-            'present_address': TextInput(attrs={'class': 'form-control', 'id': 'present_address'}),
-            'phone_number': TextInput(attrs={'class': 'form-control', 'id': 'phone_number'}),
-            'email_address': EmailInput(attrs={'class': 'form-control', 'id': 'email_address'}),
-            'father_name': TextInput(attrs={'class': 'form-control', 'id': 'father_name'}),
-            'mother_name': TextInput(attrs={'class': 'form-control', 'id': 'mother_name'}),
-            'is_approve': CheckboxInput(attrs={'class': 'form-control', 'id': 'is_approve'}),
-            'status': CheckboxInput(attrs={'class': 'form-control', 'id': 'status'}),
-            'position': Select(attrs={'class': 'form-control', 'id': 'position'}),
-            'symbol_name': Select(attrs={'class': 'form-control', 'id': 'symbol_name'}),
+            'qualification': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'qualification'}),
+            'profession': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'profession'}),
+            'eduction': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'eduction'}),
+            'present_address': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'present_address'}),
+            'phone_number': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'phone_number'}),
+            'email_address': EmailInput(attrs={'class': 'form-control form-control-sm', 'id': 'email_address'}),
+            'father_name': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'father_name'}),
+            'mother_name': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'mother_name'}),
+            'is_approve': CheckboxInput(attrs={'class': 'form-control form-control-sm', 'id': 'is_approve'}),
+            'status': CheckboxInput(attrs={'class': 'form-control form-control-sm', 'id': 'status'}),
+            'position': Select(attrs={'class': 'form-control form-control-sm', 'id': 'position'}),
+            'symbol_name': Select(attrs={'class': 'form-control form-control-sm', 'id': 'symbol_name'}),
         }

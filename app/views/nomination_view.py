@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -83,8 +83,11 @@ class CandidatesUpdateView(SuccessMessageMixin, UpdateView):
     model = Nomination
     form_class = NominationForm
     success_message = 'Candidates has been updated'
-    success_url = '/candidates-list/'
     template_name = 'nomination/candidate_update.html'
+
+    def get_success_url(self):
+        pk = self.kwargs["pk"]
+        return reverse("candidates_update", kwargs={"pk": pk})
 
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_superuser:

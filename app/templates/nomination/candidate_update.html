@@ -14,8 +14,70 @@
             <div class="card-body">
                 <form method="POST" class="agent_profile_create" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-space btn-primary btn-sm">save</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                <label disabled="" for="email_address">Candidate Username</label>
+                                {{ form.candidate }}
+                            </div>
+                            <div class="form-group">
+                                <label for="email_address">Candidate Email Address</label>
+                                {{ form.email_address }}
+                            </div>
+                            <div class="form-group">
+                                <label for="qualification">Candidate Qualification</label>
+                                {{ form.qualification }}
+                            </div>
+                            <div class="form-group">
+                                <label for="profession">Candidate Profession</label>
+                                {{ form.profession }}
+                            </div>
+                            <div class="form-group">
+                                <label for="eduction">Candidate Education</label>
+                                {{ form.eduction }}
+                            </div>
+                            <div class="form-group">
+                                <label for="present_address">Candidate Present Address</label>
+                                {{ form.present_address }}
+                            </div>
+                            <div class="form-group">
+                                <label for="phone_number">Candidate Phone Number</label>
+                                {{ form.phone_number }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="position">Candidate Position</label>
+                                {{ form.position }}
+                            </div>
+                            <div class="form-group">
+                                <label for="father_name">Candidate Father Name</label>
+                                {{ form.father_name }}
+                            </div>
+                            <div class="form-group">
+                                <label for="mother_name">Candidate Mother Name</label>
+                                {{ form.mother_name }}
+                            </div>
+                            <div class="form-group">
+                                <label for="symbol_name">Candidate Symbol Name</label>
+                                {{ form.symbol_name }}
+                            </div>
+                            <div class="form-group">
+                                <label for="is_approve">Is Approve</label>
+                               {{ form.is_approve }}
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Is Active</label>
+                               {{ form.status }}
+                            </div>
+                            <div class="form-group">
+                                <label for="created_at">Candidate Application Date</label>
+                                <input disabled value="{{ nomination.created_at }}" type="text"
+                                       class="form-control form-control-sm"/>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-space btn-primary btn-sm">Update</button>
                     <button type="reset" class="btn btn-space btn-secondary btn-sm">Cancel</button>
                 </form>
             </div>
