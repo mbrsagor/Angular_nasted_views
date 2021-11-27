@@ -15,10 +15,11 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='logout'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile-update/<pk>/', ProfileUpdateView.as_view(), name='profile_update'),
-    # nomination
+    # nominations/candidates
     path('symbol/', nomination_view.SymbolView.as_view(), name='symbol_view'),
     path('nomination-apply/', nomination_view.NominationApplyView.as_view(), name='nomination_apply'),
     path('nomination/', nomination_view.NominationSubmitList.as_view(), name='nomination_view'),
     path('candidates-list/', nomination_view.CandidatesList.as_view(), name='candidates_list'),
     path('candidates-details/<pk>/', nomination_view.CandidatesDetails.as_view(), name='candidates_details'),
+    path('candidates-update/<pk>/', nomination_view.CandidatesUpdateView.as_view(), name='candidates_update'),
 ]

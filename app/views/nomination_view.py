@@ -76,3 +76,17 @@ class CandidatesDetails(DetailView):
         if not self.request.user.is_superuser:
             return redirect(reverse_lazy("nomination_apply"))
         return super(CandidatesDetails, self).dispatch(request, *args, **kwargs)
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CandidatesUpdateView(SuccessMessageMixin, UpdateView):
+    model = Nomination
+    form_class = NominationForm
+    success_message = 'Candidates has been updated'
+    success_url = '/candidates-list/'
+    template_name = 'nomination/candidate_update.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_superuser:
+            return redirect(reverse_lazy("nomination_apply"))
+        return super(CandidatesUpdateView, self).dispatch(request, *args, **kwargs)
