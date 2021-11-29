@@ -93,3 +93,13 @@ class CandidatesUpdateView(SuccessMessageMixin, UpdateView):
         if not self.request.user.is_superuser:
             return redirect(reverse_lazy("nomination_apply"))
         return super(CandidatesUpdateView, self).dispatch(request, *args, **kwargs)
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class NominationProfile(DetailView):
+    model = Nomination
+    template_name = 'nomination/nomination_profile.html'
+    context_object_name = 'profile'
+
+    def get_queryset(self):
+        return Nomination.objects.filter(candidate__user_id=self.request.user.pk)

@@ -22,4 +22,5 @@ urlpatterns = [
     path('candidates-list/', nomination_view.CandidatesList.as_view(), name='candidates_list'),
     path('candidates-details/<pk>/', nomination_view.CandidatesDetails.as_view(), name='candidates_details'),
     path('candidates-update/<pk>/', nomination_view.CandidatesUpdateView.as_view(), name='candidates_update'),
+    path('nomination-profile/<pk>/', nomination_view.NominationProfile.as_view(), name='nomination_profile'),
 ]
