@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} {{ request.user.username }} Profile {% endblock %}
+{% block title %} {{ request.user.username }} apply nomination {% endblock %}
 
 {% block content %}
 
-
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Your nomination submit preview profile</h3>
+            <h3 class="card-title">Your nomination has been {% if profile.is_approve == True %}
+                <span style="padding: 0 3px; color:white;" class="bg-success">Accepted</span> {% else %}
+                <span style="padding: 0 3px; color:white;" class="bg-danger">Pending</span> {% endif %}</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -57,7 +58,7 @@
                     {% endif %}
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5">
-                {% if profile.email_address %}
+                    {% if profile.email_address %}
                         <div class="form-group">
                             <label for="email_address">Email Address:</label>
                             <input class="form-control form-control-sm" disabled type="text"
@@ -103,6 +104,5 @@
             </div>
         </div>
     </div>
-
 
 {% endblock %}

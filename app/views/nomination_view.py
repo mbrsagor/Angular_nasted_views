@@ -102,4 +102,5 @@ class NominationProfile(DetailView):
     context_object_name = 'profile'
 
     def get_queryset(self):
-        return Nomination.objects.filter(candidate__user_id=self.request.user.pk)
+        user_id = self.request.user.pk
+        return Nomination.objects.filter(candidate__user_id=user_id)
