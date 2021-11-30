@@ -1,7 +1,7 @@
 # election
 Election funny web application which backend Django & Django Rest Framework and Mobile Application.
 
-> For university academic project purposes making the web app.
+> N:B: I'm teaching my friends for university academic purposes making the web app.
 
 ### Prerequisites
 ###### Prerequisites
