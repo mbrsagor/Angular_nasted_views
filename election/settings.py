@@ -70,6 +70,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'election.urls'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
