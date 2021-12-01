@@ -14,10 +14,9 @@ urlpatterns = [
     path('login/', SignInView.as_view(), name='login'),
     path('signup/', SingUpView.as_view(), name='signup'),
     path('logout/', Logout.as_view(), name='logout'),
-    path('password-change',
-         auth_views.PasswordChangeView.as_view(template_name='accounts/registration/change-password.html'),
-         name='password_change'),
-
+    path('password-change/',
+         auth_views.PasswordChangeView.as_view(template_name='accounts/registration/change-password.html',
+                                               success_url='/profile/'), name='password_change'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile-update/<pk>/', ProfileUpdateView.as_view(), name='profile_update'),
     # nominations/candidates
