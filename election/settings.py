@@ -166,3 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Abstract user
 AUTH_USER_MODEL = 'app.User'
+
+# Login URL and redirect URL
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/login/'
