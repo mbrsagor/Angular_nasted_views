@@ -70,7 +70,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'election.urls'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATES = [
     {
@@ -174,7 +174,6 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/login/'
 
 # SMTP mail sending
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
