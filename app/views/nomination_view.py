@@ -18,6 +18,7 @@ class SymbolView(SuccessMessageMixin, CreateView, ListView):
     success_url = '/symbol/'
     context_object_name = 'symbol'
     paginate_by = 6
+    ordering = ['-created_at']
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -39,6 +40,7 @@ class NominationSubmitList(ListView):
     model = Nomination
     context_object_name = 'nomination'
     template_name = 'nomination/nomination_list.html'
+    ordering = ['-created_at']
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -55,6 +57,7 @@ class CandidatesList(ListView):
     model = Nomination
     context_object_name = 'nomination'
     template_name = 'nomination/candidates_list.html'
+    ordering = ['-created_at']
 
     def get_queryset(self):
         if self.request.user.is_superuser:
