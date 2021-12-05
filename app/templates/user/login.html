@@ -1,7 +1,7 @@
 {% extends 'base_auth.html' %}
 {% load static %}
 
-{% block title %} Login {% endblock %}
+{% block title %} User Login || Election {% endblock %}
 
 {% block content %}
     <div class="card ">
@@ -36,7 +36,7 @@
             <div class="card-footer-item card-footer-item-bordered">
                 <a href="{% url 'signup' %}" class="footer-link">Create An Account</a></div>
             <div class="card-footer-item card-footer-item-bordered">
-                <a href="/" class="footer-link">Forgot Password</a>
+                <a href="{% url 'reset_password' %}" class="footer-link">Forgot Password</a>
             </div>
         </div>
     </div>
