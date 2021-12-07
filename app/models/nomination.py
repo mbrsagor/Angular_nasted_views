@@ -14,6 +14,7 @@ class Symbol(models.Model):
 
 class Nomination(models.Model):
     candidate = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name='nominationProfile')
+    certificate_name = models.CharField(max_length=90, default='')
     qualification = models.CharField(max_length=300)
     profession = models.CharField(max_length=100)
     eduction = models.CharField(max_length=100)

@@ -20,10 +20,11 @@ class NominationForm(ModelForm):
         exclude = ['candidate', 'candidate_id']
         fields = [
             'qualification', 'profession', 'eduction', 'present_address', 'phone_number', 'email_address',
-            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name', 'status'
+            'father_name', 'mother_name', 'is_approve', 'position', 'symbol_name', 'status', 'certificate_name'
         ]
 
         widgets = {
+            'certificate_name': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'certificate_name'}),
             'qualification': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'qualification'}),
             'profession': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'profession'}),
             'eduction': TextInput(attrs={'class': 'form-control form-control-sm', 'id': 'eduction'}),
