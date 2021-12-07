@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Vote list || Election {% endblock %}
+
+
+{% block content %}
+
+    <style type="text/css">
+        .card img {
+            width: 100%;
+        }
+        .card_column {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+
+    <!-- page header  -->
+    {% include "vote/pageheader.html" %}
+    <!-- end page header  -->
+    <div class="row">
+        {% if vote_list %}
+            {% for vot in vote_list %}
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-4">
+                    <div class="card">
+                        <h5 class="card-header">Symbol Name: {{ vot.candidate.symbol_name.name }}</h5>
+                        <div class="card-body">
+                            <div class="card_column">
+                                <h5 class="card-title">{{ vot.candidate.candidate.make_full_name }}</h5>
+                                <h5 class="card-title">{% if vot.candidate.position == 1 %} Chairman {% elif vot.candidate.position == 2 %} Member {% else %} Word Chairman {% endif %}</h5>
+                            </div>
+                            <img src="{{ vot.candidate.symbol_name.image.url }}" alt="{{ vot.candidate.symbol_name.name }}">
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-success btn-sm">Vote</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
