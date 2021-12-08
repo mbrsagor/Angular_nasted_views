@@ -14,7 +14,7 @@ class Symbol(models.Model):
 
 class Nomination(models.Model):
     candidate = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name='nominationProfile')
-    certificate_name = models.CharField(max_length=90, default='')
+    certificate_name = models.CharField(max_length=90)
     qualification = models.CharField(max_length=300)
     profession = models.CharField(max_length=100)
     eduction = models.CharField(max_length=100)
@@ -39,4 +39,4 @@ class Nomination(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.candidate.user.username
+        return f"Candidate:{self.certificate_name} Symbol: {self.symbol_name.name}"

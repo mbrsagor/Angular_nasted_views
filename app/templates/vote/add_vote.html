@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Add your vote {% endblock %}
+
+{% block content %}
+
+    <!-- page header  -->
+    {% include "vote/pageheader.html" %}
+    {% include 'profile/message.html' %}
+    <!-- end page header  -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Add your vote select your best candidates</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="candidate">Select Your Candidates</label>
+                            {{ form.candidate }}
+                        </div>
+                        <div class="form-group">
+                            <label for="candidate">Select Your Vote</label>
+                            {{ form.vote }}
+                        </div>
+                        <button style="margin-top: 10px" type="submit" class="btn-sm btn btn-success">Vote</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

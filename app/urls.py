@@ -5,7 +5,7 @@ from app.views.dashboard_view import DashboardView
 from app.views.user_view import SignInView, SingUpView, Logout
 from app.views.profile_view import ProfileView, ProfileUpdateView
 from app.views import nomination_view
-from app.views.vote_view import VoteListView
+from app.views.vote_view import VoteListView, AddVoteCrateView
 
 urlpatterns = [
     path('', Homepage.as_view(), name='homepage'),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('nomination-profile/<pk>/', nomination_view.NominationProfile.as_view(), name='nomination_profile'),
     # Vote or selection
     path('vote/', VoteListView.as_view(), name='vote'),
+    path('add-vote/', AddVoteCrateView.as_view(), name='create_vote'),
 ]
