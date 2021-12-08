@@ -27,3 +27,5 @@ python manage.py migrate app
 python manage.py migrate
 python manage.py runserver
 ```
+
+* ALTER USER postgres with encrypted password 'postgres';
