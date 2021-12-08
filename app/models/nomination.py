@@ -24,7 +24,6 @@ class Nomination(models.Model):
     father_name = models.CharField(max_length=80)
     mother_name = models.CharField(max_length=80)
     is_approve = models.BooleanField(default=False)
-
     CHAIRMAN = 1
     MEMBER = 2
     WORDCHAIREMAN = 3
@@ -38,5 +37,13 @@ class Nomination(models.Model):
     symbol_name = models.ForeignKey(Symbol, on_delete=models.CASCADE, related_name='symbol')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def position_humanity(self):
+        if self.position == 1:
+            return "Chairman"
+        elif self.position == 2:
+            return "Member"
+        else:
+            return "Word Chairman"
+
     def __str__(self):
-        return f"Candidate:{self.certificate_name} Symbol: {self.symbol_name.name}"
+        return f"Candidate:{self.certificate_name} Position:{self.position_humanity()}  Symbol:{self.symbol_name.name}"
