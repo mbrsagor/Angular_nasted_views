@@ -18,9 +18,5 @@ class Vote(models.Model):
     class Meta:
         ordering = ('created',)
 
-    def __str__(self):
-        return f"Candidate:{self.candidate.certificate_name} Symbol:{self.candidate.symbol_name.name}"
-
-    def all_candidate(self):
-        if self.candidate.status:
-            pass
+    def __unicode__(self):
+        return u", ".join([a.name for a in self.candidate.allI()])

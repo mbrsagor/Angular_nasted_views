@@ -4,6 +4,7 @@ from django.utils.decorators import method_decorator
 
 from app.models.nomination import Nomination
 from app.models.user import Profile
+from app.models.vote import Vote
 
 
 class DashboardView(TemplateView):
@@ -18,4 +19,5 @@ class DashboardView(TemplateView):
         context['nomination_list'] = Nomination.objects.all()
         context['candidate_list'] = Nomination.objects.filter(status=True)
         context['citizens'] = Profile.objects.all()
+        context['vote'] = Vote.objects.all()
         return context
