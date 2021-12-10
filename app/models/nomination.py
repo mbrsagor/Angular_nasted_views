@@ -47,10 +47,3 @@ class Nomination(models.Model):
 
     def __str__(self):
         return f"Candidate:{self.certificate_name} Position:{self.position_humanity()}  Symbol:{self.symbol_name.name}"
-
-
-"""
-def application(venv, start_response):
-    start_response('200 OK', [('Content-Type', 'text/html')])
-    return [b"Hello World"]
-"""
