@@ -20,3 +20,6 @@ class Vote(models.Model):
 
     def __unicode__(self):
         return u", ".join([a.name for a in self.candidate.allI()])
+
+    def __str__(self):
+        return self.citizen.user.username
