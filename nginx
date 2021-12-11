@@ -5,15 +5,15 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /static/ {
-            alias /home/ubuntu/election/static;
+            root /home/ubuntu/election;
     }
 
     location /media/ {
-           alias /home/ubuntu/election/static;
+           root /home/ubuntu/election;
    }
 
     location / {
             include proxy_params;
-            proxy_pass http://unix:/home/ubuntu/election/election.sock;
+            proxy_pass http://unix:/home/ubuntu/election.sock;
     }
 }
