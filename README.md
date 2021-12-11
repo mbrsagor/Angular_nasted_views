@@ -29,3 +29,7 @@ python manage.py runserver
 ```
 
 * ALTER USER postgres with encrypted password 'postgres';
+
+#### Deployment Ngnix configurations:
+   - ``sudo nano /etc/nginx/sites-available/election``
+   - ``sudo nginx -t && sudo systemctl restart nginx``
