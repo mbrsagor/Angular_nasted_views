@@ -1,5 +1,5 @@
 # election
-Election funny web application which backend Django & Django Rest Framework and Mobile Application.
+Election management system application for my university final semester project.  Here I'm teaching my friends and learning new logic. Which backend Django & Django Rest Framework and Mobile Application.
 
 > N:B: I'm teaching my friends for university academic purposes making the web app.
 
