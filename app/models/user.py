@@ -9,7 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 class User(AbstractUser):
     email = models.EmailField(blank=True, unique=False)
     phone_number = models.CharField(max_length=14, unique=True)
-    nid_number = models.CharField(max_length=14, unique=True)
+    nid_number = models.CharField(max_length=17, unique=True)
 
     def __str__(self):
         return self.username

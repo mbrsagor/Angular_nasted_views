@@ -20,6 +20,10 @@ source venv/bin/activate
 Then create `.env` file and paste code from `example.env` file and add validate information.
 ###### After that run the server in development or production environment
 
+""  For the production: """
+ALLOWED_HOSTS='your host name'
+""" ""
+
 ##### Run development server:
 ```bash
 python manage.py makemigrations app
