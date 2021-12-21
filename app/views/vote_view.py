@@ -26,6 +26,12 @@ class AddVoteCrateView(SuccessMessageMixin, CreateView):
     success_message = 'Your vote has been completed'
     success_url = '/add-vote/'
 
+    def get_queryset(self):
+        nomination = Nomination.objects.get(is_approve=True)
+        vote = Vote.objects.get(candidate=nomination)
+        print(f"Hello, {vote}")
+        return vote
+
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.citizen = self.request.user.profile
