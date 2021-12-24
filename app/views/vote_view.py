@@ -32,12 +32,6 @@ class AddVoteCrateView(SuccessMessageMixin, CreateView):
     #     print(f"Hello, {vote}")
     #     return vote
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     nomination = Nomination.objects.get(is_approve=True)
-    #     context['form'].fields['is_approve'].queryset = Vote.objects.filter(candidate=nomination)
-    #     return context
-
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.citizen = self.request.user.profile
