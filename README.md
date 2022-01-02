@@ -1,5 +1,5 @@
 # webapp
-The WebApp is a simple website management web application which provides by Django CMS. The application is a one of the most popular CMS Wagtail.
+The WebApp is a simple website management web application provided by Django CMS. The application is one of the most popular CMS Wagtail.
 
 > N:B: I'm teaching my friends for university academic purposes making the web app.
 
@@ -24,6 +24,12 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
+```
+
+###### Use Dockerfile for development:
+```
+docker compose build
+docker compose up
 ```
 
 * ALTER USER postgres with encrypted password 'postgres';
