@@ -1,4 +1,4 @@
-# webapp
+# Django-Wagtail
 The WebApp is a simple website management web application provided by Django CMS. The application is one of the most popular CMS Wagtail.
 
 > N:B: I'm teaching my friends for university academic purposes making the web app.
